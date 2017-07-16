@@ -11,6 +11,12 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface DemoVisitor<T> extends ParseTreeVisitor<T> {
 	/**
+	 * Visit a parse tree produced by {@link DemoParser#program}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitProgram(DemoParser.ProgramContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code Zahl}
 	 * labeled alternative in {@link DemoParser#addition}.
 	 * @param ctx the parse tree
@@ -24,4 +30,10 @@ public interface DemoVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitPlus(DemoParser.PlusContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DemoParser#println}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrintln(DemoParser.PrintlnContext ctx);
 }

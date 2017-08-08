@@ -2,9 +2,12 @@ grammar Demo;
 
 program: (println ';')+;
 
-addition: links=addition '+' rechts=ZAHL #Plus | zahl=ZAHL #Zahl;
+expression: left=expression '*' right=expression #Mult  
+		| left=expression '+' right=expression #Plus 
+		| left=expression '-' right=expression #Minus 
+		| number=NUMBER #number;
 
-println: 'println(' argument=addition ')' ;
+println: 'println(' argument=expression ')' ;
 
-ZAHL: [0-9]+;
+NUMBER: [0-9]+;
 WHITESPACE: [ \t\n\r]+ -> skip;
